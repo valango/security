@@ -35,7 +35,7 @@ Use only `npm` or `pnpm`. If you need anything else, consult the IT guys first!
 
 ### Preventing AI Tools from Stealing or Compromising Your Data
 
-The https://claude.ai claims that _Claude.app_ / _Clause.exe_ is "safe", but this might not be true.
+The https://claude.ai claims that _Claude.app_ / _Claude.exe_ is "safe", but this might not be true.
 Hereby we speak of command line tools - the things you can run from the terminal window command line.
 
 #### On Mac OS
@@ -72,4 +72,4 @@ The main known attack vectors are:
 1. A tool in use gets auto-updated to a new version that contains a malicious code (unlikely).
 2. A _command insertion_ type attack to a model / agent you are using.
 3. A spyware installed or prepared for during installation of a tool.<br>
-   Example: https://www.thatprivacyguy.com/blog/anthropic-spyware 
+   Example: https://www.thatprivacyguy.com/blog/anthropic-spyware 😨
