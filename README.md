@@ -21,9 +21,9 @@ Use only `npm` or `pnpm`. If you need anything else, consult the IT guys first!
    ```
 2. Make sure there is a .npmrc or .pnpmrc file in your project directory and it contains a line:<br>
    `ignore-scripts=true`
-   The pnpm provides more flexible configuration options, see https://pnpm.io/settings#onlybuiltdependencies
+   The pnpm provides additional quite flexible configuration options, see https://pnpm.io/settings#onlybuiltdependencies
 3. Always check that none of package or configuration files contain any access keys, URLs etc., unless these are really
-   secure.
+   irrelevant.
 4. _**Do not** install_ the _default version of any package_. Always use a specific version.
    Check the package's release history and security advisories.
    The same rules apply to updating your project dependencies, too.
@@ -62,6 +62,9 @@ There are some prominent attack vectors known:
 3. If you are a developer owning any packages in public repos like npmjs.com, a malware may publish new infected
    releases of your existing packages. Usually only the release number will differ and in some cases the same release
    can be replaced.
+   
+Q: Why do I need play with .pnpmrc file if I already set the global options?<br>
+A: When deploying your stuff to hosting, your global settings will not follow. Those are only your local safeguards.
 
 ### Preventing AI Tools from Stealing or Compromising Your Data
 
