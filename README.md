@@ -42,6 +42,8 @@ Hereby we speak of command line tools - the things you can run from the terminal
 I followed https://github.com/trailofbits/claude-code-devcontainer/tree/main w/o installing OrbStack or Colima.
 Tried the "Pattern A" -> Terminal. Installation was quite lengthy, but it worked. Need to check the "Pattern B".
 
+_This looks promising_: https://docs.docker.com/ai/sandboxes/ , but _ it requires at least **MacOS.26 Tahoe**_.
+
 #### MacOS: Create a Special User Account
 Log into it (or `su -` into it) when running Claude Code. That user has
 its own home directory, its own (empty) Keychain, no access to your real `~/.ssh/`, no AWS credentials. Project files
