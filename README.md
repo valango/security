@@ -38,14 +38,17 @@ Use only `npm` or `pnpm`. If you need anything else, consult the IT guys first!
 The https://claude.ai claims that _Claude.app_ / _Claude.exe_ is "safe", but this might not be true.
 Hereby we speak of command line tools - the things you can run from the terminal window command line.
 
-#### On Mac OS
+#### MacOS: Run Claude Code in a Docker Container
+I followed https://github.com/trailofbits/claude-code-devcontainer/tree/main w/o installing OrbStack or Colima.
+Tried the "Pattern A" -> Terminal. Installation was quite lengthy, but it worked. Need to check the "Pattern B".
 
-Create a dedicated `claudedev` user on your Mac. Log into it (or `su -` into it) when running Claude Code. That user has
+#### MacOS: Create a Special User Account
+Log into it (or `su -` into it) when running Claude Code. That user has
 its own home directory, its own (empty) Keychain, no access to your real `~/.ssh/`, no AWS credentials. Project files
 live in a directory you've chmod'd to be readable by both users, or you symlink/bind-mount them in.
+<br>_**EDIT@0503**: all that is not that simple as it seems and is not proved yet._
 
-#### On Windows
-
+#### Windows:
 As for now, the only trusted way to run Claude Code is to run it from a virtual machine (VM) or a Docker container.
 
 ## Explanations
