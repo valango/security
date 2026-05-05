@@ -3,7 +3,7 @@
 _The rules are not exhaustive and apply to javascript/typescript technologies in the first place.
 Be aware that other ecosystems (Python, GoLang, ...) are under attack as well._
 
-NOTE: for better readability the more in-depth explanations are in the end of the document.
+NOTE: for better readability the more in-depth [comments](#comments) are in the end of the document.
 
 ## Rules and Requirements
 
@@ -42,7 +42,7 @@ Hereby we speak of command line tools - the things you can run from the terminal
 I followed https://github.com/trailofbits/claude-code-devcontainer/tree/main w/o installing OrbStack or Colima.
 Tried the "Pattern A" -> Terminal. Installation was quite lengthy, but it worked. Need to check the "Pattern B".
 
-_This looks promising_: https://docs.docker.com/ai/sandboxes/ , but _ it requires at least **MacOS.26 Tahoe**_.
+_This looks promising_: https://docs.docker.com/ai/sandboxes/ , but it requires at least **MacOS.26 Tahoe**.
 
 #### MacOS: Create a Special User Account
 Log into it (or `su -` into it) when running Claude Code. That user has
@@ -50,10 +50,17 @@ its own home directory, its own (empty) Keychain, no access to your real `~/.ssh
 live in a directory you've chmod'd to be readable by both users, or you symlink/bind-mount them in.
 <br>_**EDIT@0503**: all that is not that simple as it seems and is not proved yet._
 
-#### Windows:
-As for now, the only trusted way to run Claude Code is to run it from a virtual machine (VM) or a Docker container.
+#### Windows: Use Docker Sandbox:
+This could work: https://docs.docker.com/ai/sandboxes (not tested yet).
 
-## Explanations
+Running tools in VM could be a solution too. 
+
+## Comments
+
+**Q**: Is it secure to run any software in a Web Browser window?<br>
+**A**: No. Malware and infected web sites have always been there.<br>
+People think local files can't be read by a web browser, but they can.
+Running AI web apps in a browser is just _moderately safer_ than running installed versions.
 
 ### Using package managers
 
@@ -68,8 +75,8 @@ There are some prominent attack vectors known:
    releases of your existing packages. Usually only the release number will differ and in some cases the same release
    can be replaced.
    
-Q: Why do I need play with .pnpmrc file if I already set the global options?<br>
-A: When deploying your stuff to hosting, your global settings will not follow. Those are only your local safeguards.
+**Q**: Why do I need play with .pnpmrc file if I already set the global options?<br>
+**A**: When deploying your stuff to hosting, your global settings will not follow. Those are only your local safeguards.
 
 ### Preventing AI Tools from Stealing or Compromising Your Data
 
@@ -81,3 +88,7 @@ The main known attack vectors are:
 2. A _command insertion_ type attack to a model / agent you are using.
 3. A spyware installed or prepared for during installation of a tool.<br>
    Example: https://www.thatprivacyguy.com/blog/anthropic-spyware 😨
+
+## References
+
+* https://developer.chrome.com/docs/capabilities/web-apis/file-system-access
