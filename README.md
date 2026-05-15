@@ -11,6 +11,10 @@ NOTE: for better readability the more in-depth [comments](#comments) are in the 
 
 Use only `npm` or `pnpm`. If you need anything else, consult the IT guys first!
 
+Keep your package managers up to date, but don't install updates which are less than 3 days old.
+
+Regularly run _**audit** command_ on your active repositories.
+
 1. Never delete an existing `package-lock.json` or `pnpm-lock.yaml` file. This file ensures that the exact same versions
    of
    dependencies are installed when you re-install your project.
@@ -91,4 +95,5 @@ The main known attack vectors are:
 
 ## References
 
+* https://pnpm.io/supply-chain-security
 * https://developer.chrome.com/docs/capabilities/web-apis/file-system-access
