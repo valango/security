@@ -9,46 +9,25 @@ NOTE: for better readability the more in-depth explanations are in the end of th
 
 ### Using Package Managers
 
-Use only `npm` or `pnpm`. If you need anything else, consult the IT guys first!
+Currently, the `pnpm` is probably the safest option.
 
-1. Never delete an existing `package-lock.json` or `pnpm-lock.yaml` file. This file ensures that the exact same versions
-   of
-   dependencies are installed when you re-install your project.
-2. Prevent package auto-run: run
-   ```sh
-   $ npm config set -g ignore-scripts true # or 
-   $ pnpm config set ignore-scripts true
-   ```
-2. Make sure there is a .npmrc or .pnpmrc file in your project directory and it contains a line:<br>
-   `ignore-scripts=true`
-   The pnpm provides additional quite flexible configuration options, see https://pnpm.io/settings#onlybuiltdependencies
-3. Always check that none of package or configuration files contain any access keys, URLs etc., unless these are really
-   irrelevant.
-4. _**Do not** install_ the _default version of any package_. Always use a specific version.
-   Check the package's release history and security advisories.
-   The same rules apply to updating your project dependencies, too.
-   Infected uploads are usually detected in about a week or so.
-   Instead of `npm install something` use `npm install something@1.2.3`.
-5. Always use `npm ci` and NOT `npm install` when re-installing dependencies of a project.<br>With `pnpn` use
-   `pnpm install --frozen-lockfile`
-6. Do not use `npm audit fix` or `pnpn audit --fix`, because the latest versions might be installed w/o checking.
+Keep your package manager and other tools up to date but do not install any updates less than 3 days old.
+
+See recommendations on [using (p)npm](./docs/pnpm.md).
 
 ### Preventing AI Tools from Stealing or Compromising Your Data
 
 The https://claude.ai claims that _Claude.app_ / _Claude.exe_ is "safe", but this might not be true.
 Hereby we speak of command line tools - the things you can run from the terminal window command line.
 
-#### On Mac OS
+As for now, the safest way is to run CLI AI tools from docker sandbox. See [using docker sbx](./docs/docker-sbx.md).
 
-Create a dedicated `claudedev` user on your Mac. Log into it (or `su -` into it) when running Claude Code. That user has
-its own home directory, its own (empty) Keychain, no access to your real `~/.ssh/`, no AWS credentials. Project files
-live in a directory you've chmod'd to be readable by both users, or you symlink/bind-mount them in.
+## Comments
 
-#### On Windows
-
-As for now, the only trusted way to run Claude Code is to run it from a virtual machine (VM) or a Docker container.
-
-## Explanations
+**Q**: Is it secure to run any software in a Web Browser window?<br>
+**A**: No. Malware and infected web sites have always been there.<br>
+People think local files can't be read by a web browser, but they can.
+Running AI web apps in a browser is just _moderately safer_ than running installed versions.
 
 ### Using package managers
 
@@ -63,8 +42,8 @@ There are some prominent attack vectors known:
    releases of your existing packages. Usually only the release number will differ and in some cases the same release
    can be replaced.
    
-Q: Why do I need play with .pnpmrc file if I already set the global options?<br>
-A: When deploying your stuff to hosting, your global settings will not follow. Those are only your local safeguards.
+**Q**: Why do I need play with .pnpmrc file if I already set the global options?<br>
+**A**: When deploying your stuff to hosting, your global settings will not follow. Those are only your local safeguards.
 
 ### Preventing AI Tools from Stealing or Compromising Your Data
 
@@ -76,3 +55,8 @@ The main known attack vectors are:
 2. A _command insertion_ type attack to a model / agent you are using.
 3. A spyware installed or prepared for during installation of a tool.<br>
    Example: https://www.thatprivacyguy.com/blog/anthropic-spyware 😨
+
+## Links
+
+* https://pnpm.io/supply-chain-security
+* https://developer.chrome.com/docs/capabilities/web-apis/file-system-access
