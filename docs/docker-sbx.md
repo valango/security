@@ -82,4 +82,5 @@ mongodb from a container.
 * https://docs.docker.com/ai/sandboxes
 * https://docs.docker.com/reference/cli/sbx
 * https://code.visualstudio.com/docs/devcontainers/tutorial
+* https://www.freecodecamp.org/news/claude-code-in-a-docker-sandbox/
 * tons of content in youtube etc.
