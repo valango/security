@@ -17,17 +17,11 @@ See recommendations on [using (p)npm](./docs/pnpm.md).
 
 ### Preventing AI Tools from Stealing or Compromising Your Data
 
-The https://claude.ai claims that _Claude.app_ / _Claude.exe_ is "safe", but this might not be true.
-Hereby we speak of command line tools - the things you can run from the terminal window command line.
+As for now, the _**safest** option_ is to run CLI AI tools from **_Docker Sandbox_**. See [using docker sbx](./docs/docker-sbx.md).
 
-As for now, the safest way is to run CLI AI tools from docker sandbox. See [using docker sbx](./docs/docker-sbx.md).
-
-## Comments
-
-**Q**: Is it secure to run any software in a Web Browser window?<br>
-**A**: No. Malware and infected web sites have always been there.<br>
-People think local files can't be read by a web browser, but they can.
-Running AI web apps in a browser is just _moderately safer_ than running installed versions.
+Many prefer the _Claude Desktop_ over the _Claude Code_ terminal app because of better UX.
+The `claude.ai` claims that `Claude.app` / `Claude.exe` is "safe", but this statement may be missing some vital details.
+<br>See [Key Differences Between the Desktop and CLI Approach](./docs/claude-app-cli.md).
 
 ### Using package managers
 
@@ -55,6 +49,13 @@ The main known attack vectors are:
 2. A _command insertion_ type attack to a model / agent you are using.
 3. A spyware installed or prepared for during installation of a tool.<br>
    Example: https://www.thatprivacyguy.com/blog/anthropic-spyware 😨
+
+### FAQ
+
+**Q**: Is it secure to run any software in a Web Browser window?<br>
+**A**: No. Malware and infected websites have always been there.<br>
+People think local files can't be read by a web browser, but they can.
+Running AI web apps in a browser can be just _statistically safer_ than running an installed software.
 
 ## Links
 
