@@ -35,6 +35,8 @@ a special name for dockerfile nor the `-f` CLI key.
 ```
 
 ### Create the configuration
+_**NOTE**: this example shows how to bundle the necessary software (here: node v24) with a sandbox template._
+
 Create a dockerfile named `claude-docker-node24.dcr` in the _configurations folder_.
 
 ```dockerfile
@@ -56,7 +58,7 @@ should respond: `View build details: docker-desktop://dashboard/build/desktop-li
 $ docker image save MY_ORG/claude-docker-node24:v1 -o claude-docker-node24.tar
 $ sbx template load claude-docker-node24.tar
 $ cd PROJECT_DIR    ## Do NOT miss that!
-$ sbx run --template MY_ORG/claude-node24:v1 claude .
+$ sbx run --template MY_ORG/claude-docker-node24:v1 claude .
 ```
 
 The MY_ORG can be an arbitrary name for local registry or a string "docker.io/NAME" for global registry.
@@ -77,10 +79,15 @@ When absolutely necessary, U can do something like this:<br>
 **NOTE:** this won't work for local mongodb connection - supposedly the only proper way is to run
 mongodb from a container.
 
+## Troubleshooting
+
+The `sbx diagnose` is useful and Google AI can help you out in most cases.
+
 ## Links
 
 * https://docs.docker.com/ai/sandboxes
 * https://docs.docker.com/reference/cli/sbx
+* https://github.com/docker/sbx-releases/releases
 * https://code.visualstudio.com/docs/devcontainers/tutorial
 * https://www.freecodecamp.org/news/claude-code-in-a-docker-sandbox/
 * tons of content in youtube etc.
