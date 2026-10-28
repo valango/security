@@ -34,7 +34,8 @@ Run on terminal:
 ```sh
   $ ./use-template.sh claude-node24  # Uses configs/claude-node24.dcr
 ```
-... and follow the instructions for the next step.
+then go to desired work directory and type: `run --template <image-name> claude .`<br>
+where the <image-name> is one indicated by script output. If you are lost, use `docker image ls`.
 
 The sbx assigns a descriptive name to new sandbox it creates. When in doubt, use `sbx ls`.<br>
 I am a lazy person so I added a line in my `~/.zshrc` file: `alias dev='sbx run --name'`,<br>
