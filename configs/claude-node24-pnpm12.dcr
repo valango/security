@@ -1,0 +1,17 @@
+# Enhancement of ./claude-node24.dcr - installs pnpm and adds or modifies package.json accordingly.
+FROM docker/sandbox-templates:claude-code-docker
+
+ARG PNPM_VERSION=12.15.0
+ENV PNPM_VERSION=${PNPM_VERSION}
+
+USER root
+RUN curl -fsSL https://deb.nodesource.com/setup_24.x | bash - \
+&& apt-get install -y nodejs \
+&& npm install -g pnpm@${PNPM_VERSION} \
+&& npm cache clean --force \
+&& node --version
+COPY --chmod=755 configs/run-once-pnpm.sh /usr/local/bin/sbx-run-once.sh
+# /etc/sandbox-persistent.sh is sourced by every shell; the marker is set before the script starts, so child shells don't re-run it
+RUN echo '[ -f "$HOME/.sbx-run-once-done" ] || { touch "$HOME/.sbx-run-once-done"; /usr/local/bin/sbx-run-once.sh >&2; }' >> /etc/sandbox-persistent.sh
+# Switch back to the image's original non-root user (check with the command below)
+USER agent

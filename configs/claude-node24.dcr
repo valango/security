@@ -1,0 +1,10 @@
+# Plain `sbx run claude` defaults to the -docker variant (Docker Engine inside the sandbox).
+# Use docker/sandbox-templates:claude-code instead if you don't need Docker inside.
+FROM docker/sandbox-templates:claude-code-docker
+
+USER root
+RUN curl -fsSL https://deb.nodesource.com/setup_24.x | bash - \
+ && apt-get install -y nodejs \
+ && node --version
+# Switch back to the image's original non-root user (check with the command below)
+USER agent

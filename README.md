@@ -17,7 +17,8 @@ See recommendations on [using (p)npm](./docs/pnpm.md).
 
 ### Preventing AI Tools from Stealing or Compromising Your Data
 
-As for now, the _**safest** option_ is to run CLI AI tools from **_Docker Sandbox_**. See [using docker sbx](./docs/docker-sbx.md).
+As for now, the _**safest** option_ is to run CLI AI tools from **_Docker Sandbox_**.
+See [using docker sbx](./docs/docker-sbx.md) and follow the instructions in there.
 
 Many prefer the _Claude Desktop_ over the _Claude Code_ terminal app because of better UX.
 The `claude.ai` claims that `Claude.app` / `Claude.exe` is "safe", but this statement may be missing some vital details.

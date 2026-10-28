@@ -27,46 +27,20 @@ a special name for dockerfile nor the `-f` CLI key.
   $ sbx login     ## Everything below assumes you are logged in.
 ```
 
-### Pull the base image and check its default user (adjust the Dockerfile if needed)
+### Build a template
+
+The `configs/` folder contains few Dockerfiles (templates). You can modify any existing or add a new one.
+Run on terminal:
 ```sh
-  $ docker pull docker/sandbox-templates:claude-code-docker
-  $ docker image inspect docker/sandbox-templates:claude-code-docker --format '{{.Config.User}}'
-  # should respond: agent
+  $ ./use-template.sh claude-node24  # Uses configs/claude-node24.dcr
 ```
+... and follow the instructions for the next step.
 
-### Create the configuration
-_**NOTE**: this example shows how to bundle the necessary software (here: node v24) with a sandbox template._
+The sbx assigns a descriptive name to new sandbox it creates. When in doubt, use `sbx ls`.<br>
+I am a lazy person so I added a line in my `~/.zshrc` file: `alias dev='sbx run --name'`,<br>
+so to run an existing sandbox, I just type: `dev <sandbox-name>`.
 
-Create a dockerfile named `claude-docker-node24.dcr` in the _configurations folder_.
-
-```dockerfile
-# Plain `sbx run claude` defaults to the -docker variant (Docker Engine inside the sandbox).
-# Use docker/sandbox-templates:claude-code instead if you don't need Docker inside.
-FROM docker/sandbox-templates:claude-code-docker
-
-USER root
-RUN curl -fsSL https://deb.nodesource.com/setup_24.x | bash - \
-&& apt-get install -y nodejs \
-&& node --version
-# Switch back to the image's original non-root user (check with the command below)
-USER agent
-```
-Run: `$ docker build -f ./claude-docker-node24.dcr -t MY_ORG/claude-docker-node24:v1 .`<br>
-should respond: `View build details: docker-desktop://dashboard/build/desktop-linux/desktop-linux/...`
-
-```shell
-$ docker image save MY_ORG/claude-docker-node24:v1 -o claude-docker-node24.tar
-$ sbx template load claude-docker-node24.tar
-$ cd PROJECT_DIR    ## Do NOT miss that!
-$ sbx run --template MY_ORG/claude-docker-node24:v1 claude .
-```
-
-The MY_ORG can be an arbitrary name for local registry or a string "docker.io/NAME" for global registry.
-
-All done! Since now, you can start this sandbox from everywhere by just typing:<br> 
-`sbx run --name SANDBOX_NAME`.
-
-The `sbx ls` comes handy if you are lost.
+NOTE: The system modifications, e.g. installing new software, persist between sandbox sessions. 😎
 
 ## About database- and outer connections.
 
